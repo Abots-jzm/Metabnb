@@ -20,3 +20,17 @@ body {
 	font-family: "Red Rose", cursive;
 	font-weight: 400;
 }
+
+button {
+	font: inherit;
+	border: none;
+	cursor: pointer;
+}
+
+img {
+	width: 100%;
+}
+
+.hidden {
+	display: none;
+}
