@@ -1,15 +1,27 @@
 import React, { useState } from "react";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import LogoPNG from "../assets/Logo.png";
 
 export default function Header() {
 	const [navIsOpen, setNavIsOpen] = useState(false);
+	const location = useLocation();
+	const navigate = useNavigate();
+
+	function handleMobileNavigation(path) {
+		navigate(path);
+		setNavIsOpen(false);
+	}
 
 	return (
 		<Container>
 			<MobileNav isOpen={navIsOpen}>
-				<MobileNavItem active>Home</MobileNavItem>
-				<MobileNavItem>Place to stay</MobileNavItem>
+				<MobileNavItem active={location.pathname === "/"} onClick={handleMobileNavigation.bind(null, "/")}>
+					Home
+				</MobileNavItem>
+				<MobileNavItem active={location.pathname === "/place-to-stay"} onClick={handleMobileNavigation.bind(null, "/place-to-stay")}>
+					Place to stay
+				</MobileNavItem>
 				<MobileNavItem>NFTs</MobileNavItem>
 				<MobileNavItem>Community</MobileNavItem>
 				<MobileConnectContainer>
@@ -20,8 +32,13 @@ export default function Header() {
 				<img src={LogoPNG} alt="Logo" />
 			</Logo>
 			<Navigation>
-				<NavItem active>Home</NavItem>
-				<NavItem>Place to stay</NavItem>
+				<WorkingNavItem to="/" active={location.pathname === "/" ? 1 : 0}>
+					{/* 1 and 0 is to fix a react warnign/bug */}
+					Home
+				</WorkingNavItem>
+				<WorkingNavItem to="/place-to-stay" active={location.pathname === "/place-to-stay" ? 1 : 0}>
+					Place to stay
+				</WorkingNavItem>
 				<NavItem>NFTs</NavItem>
 				<NavItem>Community</NavItem>
 			</Navigation>
@@ -156,8 +173,32 @@ const ConnectBtn = styled.button`
 	}
 `;
 
+const WorkingNavItem = styled(NavLink)`
+	font-size: 2rem;
+	text-decoration: none;
+	color: #434343;
+	cursor: pointer;
+	font-weight: ${(props) => (props.active ? "700" : "400")};
+
+	&::after {
+		content: "";
+		display: block;
+		width: 0;
+		height: 1px;
+		background-color: black;
+		transition: all 0.3s;
+	}
+
+	&:hover {
+		&::after {
+			width: 100%;
+		}
+	}
+`;
+
 const NavItem = styled.div`
 	font-size: 2rem;
+	color: #434343;
 	cursor: pointer;
 	font-weight: ${(props) => (props.active ? "700" : "400")};
 

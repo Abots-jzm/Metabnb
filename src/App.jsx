@@ -1,11 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import Header from "./components/Header";
+import Shell from "./components/Shell";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import PlaceToStay from "./pages/PlaceToStay";
 
 function App() {
 	return (
 		<Container>
-			<Header />
+			<Routes>
+				<Route path="/" element={<Shell />}>
+					<Route index element={<Home />}></Route>
+					<Route path="/place-to-stay" element={<PlaceToStay />}></Route>
+				</Route>
+			</Routes>
 		</Container>
 	);
 }
