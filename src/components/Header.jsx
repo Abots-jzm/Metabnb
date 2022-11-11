@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import LogoPNG from "../assets/Logo.png";
 
 export default function Header() {
+	const [navIsOpen, setNavIsOpen] = useState(false);
+
 	return (
 		<Container>
+			<MobileNav isOpen={navIsOpen}>
+				<MobileNavItem active>Home</MobileNavItem>
+				<MobileNavItem>Place to stay</MobileNavItem>
+				<MobileNavItem>NFTs</MobileNavItem>
+				<MobileNavItem>Community</MobileNavItem>
+				<MobileConnectContainer>
+					<MobileConnectBtn>Connect wallet</MobileConnectBtn>
+				</MobileConnectContainer>
+			</MobileNav>
 			<Logo>
 				<img src={LogoPNG} alt="Logo" />
 			</Logo>
@@ -16,39 +27,99 @@ export default function Header() {
 			</Navigation>
 			<Right>
 				<ConnectBtn>Connect wallet</ConnectBtn>
-				<HamburgerContainer>
-					<Hamburger />
+				<HamburgerContainer onClick={() => setNavIsOpen((prevState) => !prevState)}>
+					<Hamburger isOpen={navIsOpen} />
 				</HamburgerContainer>
 			</Right>
 		</Container>
 	);
 }
 
-const Hamburger = styled.div`
-	position: relative;
+const MobileConnectBtn = styled.button`
+	border-radius: 1rem;
+	color: #a02279;
+	padding: 1.4rem 2.6rem;
+	background-color: white;
+	width: 100%;
+	transition: all 0.2s;
 
-	&,
-	&::before,
-	&::after {
-		width: 2.5rem;
-		height: 2px;
-		background-color: #333;
-		display: inline-block;
+	&:hover {
+		background-color: #ddd;
 	}
+`;
+
+const MobileConnectContainer = styled.div`
+	border-top: 1px solid white;
+	padding-top: 2.4rem;
+`;
+
+const MobileNavItem = styled.div`
+	color: white;
+	cursor: pointer;
+	padding: 2.4rem 0;
+	font-weight: ${(props) => (props.active ? "700" : "400")};
+`;
+
+const MobileNav = styled.nav`
+	position: fixed;
+	inset: 0;
+	background-color: #a02279;
+	z-index: 99;
+	display: none;
+	flex-direction: column;
+	font-size: 2rem;
+	padding-top: 9rem;
+	padding-left: 3rem;
+	padding-right: 3rem;
+	transform: ${(props) => (props.isOpen ? "translateX(0)" : "translateX(100%)")};
+
+	transition: transform 0.3s;
+
+	@media only screen and (max-width: 1024px) {
+		display: flex;
+	}
+`;
+
+const Hamburger = styled.div`
+	width: 2.5rem;
+	height: 2px;
+	display: inline-block;
+	position: relative;
+	background-color: ${(props) => (props.isOpen ? "transparent" : "#333")};
+	transition: all 0.3s;
 
 	&::before,
 	&::after {
 		content: "";
+		width: 2.5rem;
+		height: 2px;
+		background-color: ${(props) => (props.isOpen ? "white" : "#333")};
+		display: inline-block;
 		position: absolute;
 		left: 0;
+		transition: all 0.3s;
 	}
 
 	&::before {
 		top: -0.8rem;
+		${(props) =>
+			props.isOpen
+				? `
+      top: 0;
+      transform: rotate(135deg);
+    `
+				: ""}
 	}
 
 	&::after {
 		top: 0.8rem;
+		${(props) =>
+			props.isOpen
+				? `
+      top: 0;
+      transform: rotate(-135deg);
+    `
+				: ""}
 	}
 `;
 
@@ -57,6 +128,7 @@ const HamburgerContainer = styled.div`
 	margin-top: -0.8rem;
 	cursor: pointer;
 	display: none;
+	z-index: 100;
 
 	@media only screen and (max-width: 1024px) {
 		display: block;
