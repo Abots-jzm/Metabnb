@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Shell from "./components/Shell";
+import Layout from "./components/Layout";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import PlaceToStay from "./pages/PlaceToStay";
@@ -9,7 +9,7 @@ function App() {
 	return (
 		<Container>
 			<Routes>
-				<Route path="/" element={<Shell />}>
+				<Route path="/" element={<Layout />}>
 					<Route index element={<Home />}></Route>
 					<Route path="/place-to-stay" element={<PlaceToStay />}></Route>
 				</Route>
