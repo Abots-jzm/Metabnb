@@ -8,6 +8,8 @@ import MBtokenSVG from "../assets/Band icons/Mbtoken.svg";
 import MetamaskSVG from "../assets/Band icons/Metamask.svg";
 import OpenseaSVG from "../assets/Band icons/Open sea.svg";
 import { BsSearch } from "react-icons/bs";
+import CardItem from "../components/CardItem";
+import DummyImage from "../assets/Card images/image (1).jpg";
 
 export default function Home() {
 	return (
@@ -52,14 +54,14 @@ export default function Home() {
 			<Inspiration>
 				<h3>Inspiration for your next adventure</h3>
 				<CardsGrid>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
+					<CardItem image={DummyImage} />
+					<CardItem image={DummyImage} />
+					<CardItem image={DummyImage} />
+					<CardItem image={DummyImage} />
+					<CardItem image={DummyImage} />
+					<CardItem image={DummyImage} />
+					<CardItem image={DummyImage} />
+					<CardItem image={DummyImage} />
 				</CardsGrid>
 			</Inspiration>
 		</>
@@ -70,12 +72,6 @@ const CardsGrid = styled.div`
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
 	gap: 2.4rem;
-
-	div {
-		width: 100%;
-		height: 30rem;
-		background-color: red;
-	}
 `;
 
 const Inspiration = styled.section`
