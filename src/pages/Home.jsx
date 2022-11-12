@@ -4,6 +4,9 @@ import HeroImage1 from "../assets/Hero images/image 1.jpg";
 import HeroImage2 from "../assets/Hero images/image 2.jpg";
 import HeroImage3 from "../assets/Hero images/image 3.jpg";
 import HeroImage4 from "../assets/Hero images/image 4.jpg";
+import MBtokenSVG from "../assets/Band icons/Mbtoken.svg";
+import MetamaskSVG from "../assets/Band icons/Metamask.svg";
+import OpenseaSVG from "../assets/Band icons/Open sea.svg";
 import { BsSearch } from "react-icons/bs";
 
 export default function Home() {
@@ -35,9 +38,38 @@ export default function Home() {
 					<img src={HeroImage4} alt="image 4" />
 				</div>
 			</Hero>
+			<Sponsors>
+				<div>
+					<img src={MBtokenSVG} alt="mbtoken" />
+				</div>
+				<div>
+					<img src={MetamaskSVG} alt="meta mask" />
+				</div>
+				<div>
+					<img src={OpenseaSVG} alt="open sea" />
+				</div>
+			</Sponsors>
 		</>
 	);
 }
+
+const ColoredSection = styled.section`
+	background-color: #a02279;
+	box-shadow: 0 0 0 100vmax #a02279;
+	clip-path: inset(0 -100vmax);
+`;
+
+const Sponsors = styled(ColoredSection)`
+	padding: 1rem 0;
+	display: flex;
+	gap: 18vw;
+	justify-content: center;
+	align-items: center;
+
+	@media only screen and (max-width: 768px) {
+		gap: 10vw;
+	}
+`;
 
 const Hero = styled.section`
 	margin-top: 12.5rem;
@@ -45,6 +77,7 @@ const Hero = styled.section`
 	justify-content: space-between;
 	align-items: center;
 	gap: 7vw;
+	margin-bottom: 6.7rem;
 
 	@media only screen and (max-width: 1024px) {
 		margin-top: 7.2rem;
