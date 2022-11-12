@@ -4,6 +4,7 @@ import HeroImage1 from "../assets/Hero images/image 1.jpg";
 import HeroImage2 from "../assets/Hero images/image 2.jpg";
 import HeroImage3 from "../assets/Hero images/image 3.jpg";
 import HeroImage4 from "../assets/Hero images/image 4.jpg";
+import { BsSearch } from "react-icons/bs";
 
 export default function Home() {
 	return (
@@ -19,7 +20,12 @@ export default function Home() {
 					</p>
 					<form onSubmit={(e) => e.preventDefault()}>
 						<input type="text" placeholder="Search for location" />
-						<button type="submit">Search</button>
+						<button type="submit" className="big">
+							Search
+						</button>
+						<button type="submit" className="small">
+							<BsSearch />
+						</button>
 					</form>
 				</div>
 				<div className="right">
@@ -33,13 +39,22 @@ export default function Home() {
 	);
 }
 
-const Hero = styled.div`
+const Hero = styled.section`
 	margin-top: 12.5rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	gap: 7vw;
-	margin-bottom: 6.7rem;
+
+	@media only screen and (max-width: 1024px) {
+		margin-top: 7.2rem;
+	}
+
+	@media only screen and (max-width: 768px) {
+		margin-top: 4.8rem;
+		flex-direction: column;
+		gap: 4.8rem;
+	}
 
 	.left {
 		flex: 3;
@@ -48,9 +63,21 @@ const Hero = styled.div`
 		gap: 4.8rem;
 		color: #434343;
 
+		@media only screen and (max-width: 1024px) {
+			flex: 2;
+		}
+
+		@media only screen and (max-width: 1024px) {
+			gap: 2.4rem;
+		}
+
 		h1 {
 			font-size: 5.6rem;
 			font-weight: 400;
+
+			@media only screen and (max-width: 1024px) {
+				font-size: 4.8rem;
+			}
 
 			span {
 				color: #a02279;
@@ -69,6 +96,7 @@ const Hero = styled.div`
 				flex: 3;
 				padding-left: 1.5rem;
 				border-radius: 0.8rem 0 0 0.8rem;
+				width: 100%;
 
 				&,
 				&:focus,
@@ -91,8 +119,29 @@ const Hero = styled.div`
 				color: white;
 				border-radius: 0 0.8rem 0.8rem 0;
 
+				@media only screen and (max-width: 768px) {
+					padding: 1rem;
+				}
+
 				&:hover {
 					background-color: #ca2b98;
+				}
+			}
+
+			button.big {
+				@media only screen and (max-width: 768px) {
+					display: none;
+				}
+			}
+
+			button.small {
+				display: none;
+				font-size: 2rem;
+				flex: 0;
+				padding-inline: 2.4rem;
+
+				@media only screen and (max-width: 768px) {
+					display: block;
 				}
 			}
 		}
@@ -106,10 +155,18 @@ const Hero = styled.div`
 
 		& :first-child {
 			margin-top: 10rem;
+
+			@media only screen and (max-width: 768px) {
+				margin-top: 6rem;
+			}
 		}
 
 		& :last-child {
 			transform: translateY(-10rem);
+
+			@media only screen and (max-width: 768px) {
+				transform: translateY(-6rem);
+			}
 		}
 	}
 `;
