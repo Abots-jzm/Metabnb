@@ -6,7 +6,6 @@ import HeroImage3 from "../assets/Hero images/image 3.jpg";
 import HeroImage4 from "../assets/Hero images/image 4.jpg";
 
 export default function Home() {
-	console.log("bro");
 	return (
 		<>
 			<Hero>
@@ -40,6 +39,7 @@ const Hero = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	gap: 7vw;
+	margin-bottom: 6.7rem;
 
 	.left {
 		flex: 3;
