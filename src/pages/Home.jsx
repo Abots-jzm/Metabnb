@@ -49,9 +49,44 @@ export default function Home() {
 					<img src={OpenseaSVG} alt="open sea" />
 				</div>
 			</Sponsors>
+			<Inspiration>
+				<h3>Inspiration for your next adventure</h3>
+				<CardsGrid>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</CardsGrid>
+			</Inspiration>
 		</>
 	);
 }
+
+const CardsGrid = styled.div`
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+	gap: 2.4rem;
+
+	div {
+		width: 100%;
+		height: 30rem;
+		background-color: red;
+	}
+`;
+
+const Inspiration = styled.section`
+	h3 {
+		margin: 5.8rem auto;
+		color: black;
+		font-size: 4.8rem;
+		font-weight: 700;
+		text-align: center;
+	}
+`;
 
 const ColoredSection = styled.section`
 	background-color: #a02279;
