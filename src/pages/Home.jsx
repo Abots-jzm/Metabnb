@@ -10,6 +10,10 @@ import OpenseaSVG from "../assets/Band icons/Open sea.svg";
 import { BsSearch } from "react-icons/bs";
 import CardItem from "../components/CardItem";
 import DummyImage from "../assets/Card images/image (1).jpg";
+import { CARD_IMAGES } from "../utils/data";
+
+const HOME_CARDS = CARD_IMAGES.filter((_, i) => i >= 4 && i <= 7);
+const HOME_CARDS2 = CARD_IMAGES.filter((_, i) => i < 4);
 
 export default function Home() {
 	return (
@@ -54,14 +58,12 @@ export default function Home() {
 			<Inspiration>
 				<h3>Inspiration for your next adventure</h3>
 				<CardsGrid>
-					<CardItem image={DummyImage} />
-					<CardItem image={DummyImage} />
-					<CardItem image={DummyImage} />
-					<CardItem image={DummyImage} />
-					<CardItem image={DummyImage} />
-					<CardItem image={DummyImage} />
-					<CardItem image={DummyImage} />
-					<CardItem image={DummyImage} />
+					{HOME_CARDS.map((item) => (
+						<CardItem image={item} />
+					))}
+					{HOME_CARDS2.map((item) => (
+						<CardItem image={item} />
+					))}
 				</CardsGrid>
 			</Inspiration>
 		</>
@@ -81,6 +83,11 @@ const Inspiration = styled.section`
 		font-size: 4.8rem;
 		font-weight: 700;
 		text-align: center;
+
+		@media only screen and (max-width: 768px) {
+			margin: 3.2rem auto;
+			font-size: 3.2rem;
+		}
 	}
 `;
 
