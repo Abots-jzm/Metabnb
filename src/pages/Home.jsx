@@ -9,8 +9,8 @@ import MetamaskSVG from "../assets/Band icons/Metamask.svg";
 import OpenseaSVG from "../assets/Band icons/Open sea.svg";
 import { BsSearch } from "react-icons/bs";
 import CardItem from "../components/CardItem";
-import DummyImage from "../assets/Card images/image (1).jpg";
 import { CARD_IMAGES } from "../utils/data";
+import NFTImages from "../assets/NFTs section images/images.png";
 
 const HOME_CARDS = CARD_IMAGES.filter((_, i) => i >= 4 && i <= 7);
 const HOME_CARDS2 = CARD_IMAGES.filter((_, i) => i < 4);
@@ -66,9 +66,84 @@ export default function Home() {
 					))}
 				</CardsGrid>
 			</Inspiration>
+			<NFTsSection>
+				<div className="left">
+					<h3>Metabnb NFTs</h3>
+					<p>
+						Discover our NFT gift cards collection. Loyal customers gets amazing gift cards which are traded as NFTs. These NFTs gives our cutomer
+						access to loads of our exclusive services.
+					</p>
+					<button>Learn more</button>
+				</div>
+				<div className="right">
+					<img src={NFTImages} alt="images" />
+				</div>
+			</NFTsSection>
 		</>
 	);
 }
+
+//Components from are from bottom to top
+
+const ColoredSection = styled.section`
+	background-color: #a02279;
+	box-shadow: 0 0 0 100vmax #a02279;
+	clip-path: inset(0 -100vmax);
+`;
+
+const NFTsSection = styled(ColoredSection)`
+	margin-top: 5.3rem;
+	padding: 10rem 0;
+	display: flex;
+	gap: 4vw;
+	align-items: center;
+
+	@media only screen and (max-width: 768px) {
+		flex-direction: column;
+		padding: 4.8rem 0;
+		gap: 4.8rem;
+	}
+
+	.left {
+		color: white;
+		flex: 2;
+
+		h3 {
+			font-size: 4.8rem;
+			font-weight: 700;
+		}
+
+		p {
+			margin-top: 3.5rem;
+			font-size: 1.8rem;
+			font-weight: 400;
+			line-height: 3.5rem;
+
+			@media only screen and (max-width: 768px) {
+				margin-top: 1.5rem;
+			}
+		}
+
+		button {
+			margin-top: 5.7rem;
+			padding: 1.4rem 3.3rem;
+			color: #a02279;
+			border-radius: 0.8rem;
+
+			&:hover {
+				background-color: #ddd;
+			}
+
+			@media only screen and (max-width: 768px) {
+				margin-top: 2.4rem;
+			}
+		}
+	}
+
+	.right {
+		flex: 3;
+	}
+`;
 
 const CardsGrid = styled.div`
 	display: grid;
@@ -89,12 +164,6 @@ const Inspiration = styled.section`
 			font-size: 3.2rem;
 		}
 	}
-`;
-
-const ColoredSection = styled.section`
-	background-color: #a02279;
-	box-shadow: 0 0 0 100vmax #a02279;
-	clip-path: inset(0 -100vmax);
 `;
 
 const Sponsors = styled(ColoredSection)`
@@ -158,6 +227,7 @@ const Hero = styled.section`
 
 		p {
 			font-size: 2.4rem;
+			line-height: 3.5rem;
 		}
 
 		form {
