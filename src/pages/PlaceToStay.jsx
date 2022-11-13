@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { MdTune } from "react-icons/md";
+import { BiChevronRight } from "react-icons/bi";
 
 export default function PlaceToStay() {
 	return (
@@ -17,7 +18,8 @@ export default function PlaceToStay() {
 					<div>Farm</div>
 				</div>
 				<button className="location">
-					Location <MdTune />
+					<span className="text">Location</span>
+					<MdTune />
 				</button>
 			</OptionsBar>
 		</>
@@ -30,17 +32,31 @@ const OptionsBar = styled.div`
 	align-items: center;
 	margin-top: 11.5rem;
 
+	@media only screen and (max-width: 768px) {
+		margin-top: 5.5rem;
+		gap: 4.8rem;
+	}
+
 	.filters {
 		color: #434343;
 		flex: 1;
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 		white-space: nowrap;
 		gap: 2.4rem;
 		overflow-x: auto;
+		align-self: stretch;
 
 		&::-webkit-scrollbar {
-			display: none;
+			height: 2px;
+		}
+		&::-webkit-scrollbar-track {
+			background-color: transparent;
+		}
+		&::-webkit-scrollbar-thumb {
+			background: #555;
+			border-radius: 100rem;
 		}
 
 		& > div {
@@ -66,6 +82,12 @@ const OptionsBar = styled.div`
 
 		&:hover {
 			background-color: #f6f6f6;
+		}
+
+		.text {
+			@media only screen and (max-width: 768px) {
+				display: none;
+			}
 		}
 	}
 `;
