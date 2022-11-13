@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { MdTune } from "react-icons/md";
-import { BiChevronRight } from "react-icons/bi";
+import { CARD_IMAGES } from "../utils/data";
+import CardItem from "../components/CardItem";
 
 export default function PlaceToStay() {
 	return (
@@ -22,9 +23,22 @@ export default function PlaceToStay() {
 					<MdTune />
 				</button>
 			</OptionsBar>
+			<CardsGrid>
+				{CARD_IMAGES.map((item, i) => (
+					<CardItem image={item} key={i} />
+				))}
+			</CardsGrid>
 		</>
 	);
 }
+
+const CardsGrid = styled.div`
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+	gap: 2.4rem;
+	margin-top: 6.4rem;
+	margin-bottom: 9.2rem;
+`;
 
 const OptionsBar = styled.div`
 	display: flex;
