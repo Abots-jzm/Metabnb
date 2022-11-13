@@ -1,6 +1,71 @@
 import React from "react";
 import styled from "styled-components";
+import { MdTune } from "react-icons/md";
 
 export default function PlaceToStay() {
-	return <div>PlaceToStay</div>;
+	return (
+		<>
+			<OptionsBar>
+				<div className="filters">
+					<div>Resturaunt</div>
+					<div>Cottage</div>
+					<div>Castle</div>
+					<div>fantast city</div>
+					<div>beach</div>
+					<div>Carbins</div>
+					<div>Off-grid</div>
+					<div>Farm</div>
+				</div>
+				<button className="location">
+					Location <MdTune />
+				</button>
+			</OptionsBar>
+		</>
+	);
 }
+
+const OptionsBar = styled.div`
+	display: flex;
+	gap: 6.5rem;
+	align-items: center;
+	margin-top: 11.5rem;
+
+	.filters {
+		color: #434343;
+		flex: 1;
+		display: flex;
+		justify-content: space-between;
+		white-space: nowrap;
+		gap: 2.4rem;
+		overflow-x: auto;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		& > div {
+			cursor: pointer;
+			transition: all 0.2s;
+
+			&:hover {
+				font-weight: 700;
+			}
+		}
+	}
+
+	.location {
+		flex: 0;
+		display: flex;
+		gap: 4rem;
+		align-items: center;
+		padding: 1.4rem;
+		border: 1px solid #b4b4b4;
+		border-radius: 0.8rem;
+		background-color: white;
+		color: #333333;
+
+		&:hover {
+			background-color: #f6f6f6;
+		}
+	}
+`;
