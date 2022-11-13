@@ -10,7 +10,17 @@ export default function Header() {
 
 	function handleMobileNavigation(path) {
 		navigate(path);
+		hideNav();
+	}
+
+	function showNav() {
+		setNavIsOpen(true);
+		document.body.style.overflow = "hidden";
+	}
+
+	function hideNav() {
 		setNavIsOpen(false);
+		document.body.style.overflow = "auto";
 	}
 
 	return (
@@ -44,7 +54,7 @@ export default function Header() {
 			</Navigation>
 			<Right>
 				<ConnectBtn>Connect wallet</ConnectBtn>
-				<HamburgerContainer onClick={() => setNavIsOpen((prevState) => !prevState)}>
+				<HamburgerContainer onClick={navIsOpen ? hideNav : showNav}>
 					<Hamburger isOpen={navIsOpen} />
 				</HamburgerContainer>
 			</Right>

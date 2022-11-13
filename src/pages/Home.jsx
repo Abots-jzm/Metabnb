@@ -58,11 +58,11 @@ export default function Home() {
 			<Inspiration>
 				<h3>Inspiration for your next adventure</h3>
 				<CardsGrid>
-					{HOME_CARDS.map((item) => (
-						<CardItem image={item} />
+					{HOME_CARDS.map((item, i) => (
+						<CardItem image={item} key={i} />
 					))}
-					{HOME_CARDS2.map((item) => (
-						<CardItem image={item} />
+					{HOME_CARDS2.map((item, i) => (
+						<CardItem image={item} key={i} />
 					))}
 				</CardsGrid>
 			</Inspiration>
