@@ -12,9 +12,10 @@ export default function ConnectWalletModal({ closeModal }) {
 	return (
 		<>
 			{createPortal(
-				<Overlay closeModal={closeModal}>
+				<Layout>
+					<Overlay closeModal={closeModal} />
 					<Modal closeModal={closeModal} />
-				</Overlay>,
+				</Layout>,
 				element
 			)}
 		</>
@@ -30,7 +31,7 @@ function Modal({ closeModal }) {
 		<Container>
 			<div className="heading">
 				Connect Wallet
-				<div>
+				<div onClick={closeModal}>
 					<IoClose />
 				</div>
 			</div>
@@ -40,7 +41,7 @@ function Modal({ closeModal }) {
 					<div className="picture">
 						<img src={MetamaskPNG} alt="meta mask" />
 					</div>
-					<div onClick={closeModal}>
+					<div>
 						<BiChevronRight />
 					</div>
 				</button>
@@ -48,7 +49,7 @@ function Modal({ closeModal }) {
 					<div className="picture">
 						<img src={WalletConnectPNG} alt="wallet connect" />
 					</div>
-					<div onClick={closeModal}>
+					<div>
 						<BiChevronRight />
 					</div>
 				</button>
@@ -57,10 +58,23 @@ function Modal({ closeModal }) {
 	);
 }
 
+const Layout = styled.div`
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`;
+
 const Container = styled.div`
+	position: relative;
 	background-color: white;
 	width: min(60rem, 90%);
 	border-radius: 1.6rem;
+	z-index: 101;
 
 	.buttons {
 		margin: 1.2rem 0 3.2rem;
@@ -117,15 +131,13 @@ const Container = styled.div`
 `;
 
 const BackDrop = styled.div`
-	position: fixed;
+	position: absolute;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	right: 0;
 	background: rgba(79, 79, 79, 0.4);
 	z-index: 100;
-	display: grid;
-	place-items: center;
 
 	transition: all 0.2s;
 `;

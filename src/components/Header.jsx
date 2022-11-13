@@ -121,7 +121,7 @@ const MobileNav = styled.nav`
 	padding-right: 3rem;
 	transform: ${(props) => (props.isOpen ? "translateX(0)" : "translateX(100%)")};
 
-	transition: transform 0.3s;
+	transition: transform 0.3s ease-out;
 
 	@media only screen and (max-width: 1024px) {
 		display: flex;

@@ -129,6 +129,7 @@ const NFTsSection = styled(ColoredSection)`
 			padding: 1.4rem 3.3rem;
 			color: #a02279;
 			border-radius: 0.8rem;
+			transition: all 0.2s;
 
 			&:hover {
 				background-color: #ddd;
@@ -259,6 +260,7 @@ const Hero = styled.section`
 				background-color: #a02279;
 				color: white;
 				border-radius: 0 0.8rem 0.8rem 0;
+				transition: all 0.2s;
 
 				@media only screen and (max-width: 768px) {
 					padding: 1rem;
