@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import LogoPNG from "../assets/Logo.png";
+import ConnectWalletModal from "./ConnectWalletModal";
 
 export default function Header() {
 	const [navIsOpen, setNavIsOpen] = useState(false);
+	const [modalIsOpen, setModalIsOpen] = useState(false);
+
 	const location = useLocation();
 	const navigate = useNavigate();
 
@@ -23,8 +26,19 @@ export default function Header() {
 		document.body.style.overflow = "auto";
 	}
 
+	function openModal() {
+		setModalIsOpen(true);
+		document.body.style.overflow = "hidden";
+	}
+
+	function closeModal() {
+		setModalIsOpen(false);
+		document.body.style.overflow = "auto";
+	}
+
 	return (
 		<Container>
+			{modalIsOpen && <ConnectWalletModal closeModal={closeModal} />}
 			<MobileNav isOpen={navIsOpen}>
 				<MobileNavItem active={location.pathname === "/"} onClick={handleMobileNavigation.bind(null, "/")}>
 					Home
@@ -35,7 +49,14 @@ export default function Header() {
 				<MobileNavItem>NFTs</MobileNavItem>
 				<MobileNavItem>Community</MobileNavItem>
 				<MobileConnectContainer>
-					<MobileConnectBtn>Connect wallet</MobileConnectBtn>
+					<MobileConnectBtn
+						onClick={() => {
+							hideNav();
+							openModal();
+						}}
+					>
+						Connect wallet
+					</MobileConnectBtn>
 				</MobileConnectContainer>
 			</MobileNav>
 			<Logo>
@@ -53,7 +74,7 @@ export default function Header() {
 				<NavItem>Community</NavItem>
 			</Navigation>
 			<Right>
-				<ConnectBtn>Connect wallet</ConnectBtn>
+				<ConnectBtn onClick={openModal}>Connect wallet</ConnectBtn>
 				<HamburgerContainer onClick={navIsOpen ? hideNav : showNav}>
 					<Hamburger isOpen={navIsOpen} />
 				</HamburgerContainer>
