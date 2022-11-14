@@ -136,6 +136,14 @@ const Hamburger = styled.div`
 	background-color: ${(props) => (props.isOpen ? "transparent" : "#333")};
 	transition: all 0.3s;
 
+	${(props) =>
+		props.isOpen &&
+		`
+		position: fixed;
+		right: 2rem;
+		top: 5.6rem;
+	`};
+
 	&::before,
 	&::after {
 		content: "";

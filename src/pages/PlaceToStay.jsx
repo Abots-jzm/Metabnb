@@ -94,8 +94,14 @@ const OptionsBar = styled.div`
 		background-color: white;
 		color: #333333;
 
-		&:hover {
+		&:active {
 			background-color: #f6f6f6;
+		}
+
+		@media (hover: hover) {
+			&:hover {
+				background-color: #f6f6f6;
+			}
 		}
 
 		.text {
